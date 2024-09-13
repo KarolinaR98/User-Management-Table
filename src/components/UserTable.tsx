@@ -1,65 +1,40 @@
 import './UserTable.css';
-import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { getUsers } from "../redux/usersSlice";
-import { User } from '../types';
+import { getUsers, setUserSearchValue, setFilterValue, setFilteredData} from "../redux/usersSlice";
+import { Filter } from '../types';
+import { useEffect } from 'react';
 
-enum Filter {
-    name = "name",
-    username = "username",
-    email = "email",
-    phone = "phone"
-}
+
 
 const UserTable = () => {
 
     const dispatch = useAppDispatch();
-    const users = useAppSelector(state => state.users.data);
+    const users = useAppSelector((state) => state.users.filteredData);
+    const searchValue = useAppSelector((state) => state.users.usersSearchValue);
+    const filterValue = useAppSelector((state) => state.users.usersFilter);
 
-    const [selectedFilter, setSelectedFilter] = useState<string>("");
-    const [searchValue, setSearchValue] = useState<string>("");
-    const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
-
-    const filterTable = (searchValue: string) => {
-
-        if (selectedFilter === Filter.name) {
-            setFilteredUsers(users?.filter(user => user.name.toLowerCase().includes(searchValue.toLocaleLowerCase())));
-        }
-        else if (selectedFilter === Filter.username) {
-            setFilteredUsers(users?.filter(user => user.username.toLowerCase().includes(searchValue.toLocaleLowerCase())));
-        }
-        else if (selectedFilter === Filter.email) {
-            setFilteredUsers(users?.filter(user => user.email.toLowerCase().includes(searchValue.toLocaleLowerCase())));
-        }
-        else if (selectedFilter === Filter.phone) {
-            setFilteredUsers(users?.filter(user => user.phone.toLowerCase().includes(searchValue.toLocaleLowerCase())));
-        }
-    }
 
 
     useEffect(() => {
         dispatch(getUsers());
-        setFilteredUsers(users);
     }, []);
 
-    useEffect(()=>{
-        filterTable(searchValue);
-    }, [searchValue, selectedFilter]);
+    useEffect(() => {
+        dispatch(setFilteredData());
+    }, [searchValue, filterValue]);
 
     return (
         <>
             <div className='user-table-component'>
                 <div className='container'>
                     <div className='filter-bar'>
-                        <select onChange={e => setSelectedFilter(e.target.value)} name='collumn-names' value={selectedFilter}>
-                            <option disabled value={""}></option>
+                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names' value={filterValue} defaultValue={Filter.name}>
                             <option value={Filter.name}>Name</option>
                             <option value={Filter.username}>Username</option>
                             <option value={Filter.email}>Email</option>
                             <option value={Filter.phone}>Phone</option>
                         </select>
-                        <input onChange={e => setSearchValue(e.target.value)} type='text' placeholder={selectedFilter !== "" ? `Search user by ${selectedFilter}` : "Choose filter"}
-                            disabled={selectedFilter !== "" ? false : true}></input>
+                        <input onChange={e => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`}/>
                     </div>
                     <div className='table-wrapper'>
                         <table className='userTable'>
@@ -72,7 +47,7 @@ const UserTable = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredUsers && filteredUsers.map((user) => {
+                                {users && users.map((user) => {
                                     return (
                                         <tr key={user.id}>
                                             <td>

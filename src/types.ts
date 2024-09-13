@@ -5,3 +5,10 @@ export type User = {
     email: string;
     phone: string;
 }
+
+export enum Filter {
+    name = "name",
+    username = "username",
+    email = "email",
+    phone = "phone"
+}
