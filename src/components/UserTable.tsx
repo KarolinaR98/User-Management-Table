@@ -1,4 +1,5 @@
 import './UserTable.css';
+import loupeImg from '../assets/images/white-loupe.png';
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getUsers, setUserSearchValue, setFilterValue, setFilteredData } from "../redux/usersSlice";
 import { Filter } from '../types';
@@ -72,7 +73,7 @@ const UserTable = () => {
                         </table>
                     </div>}
                     {users.length === 0 && <div className='no-results-msg-container'>
-                        <img src={"./src/assets/images/white-loupe.png"} alt="Loupe" />
+                        <img src={loupeImg} alt="Loupe" />
                         <p className='no-result-msg'>No results found</p>
                     </div>}
                 </div>
