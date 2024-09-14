@@ -1,7 +1,7 @@
 import './UserTable.css';
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { getUsers, setUserSearchValue, setFilterValue, setFilteredData} from "../redux/usersSlice";
-import { Filter } from '../types';
+import { getUsers, setUserSearchValue, setFilterValue, setFilteredData } from "../redux/usersSlice";
+import { Filter} from '../types';
 import { useEffect } from 'react';
 
 
@@ -12,8 +12,6 @@ const UserTable = () => {
     const users = useAppSelector((state) => state.users.filteredData);
     const searchValue = useAppSelector((state) => state.users.usersSearchValue);
     const filterValue = useAppSelector((state) => state.users.usersFilter);
-
-
 
     useEffect(() => {
         dispatch(getUsers());
@@ -28,13 +26,13 @@ const UserTable = () => {
             <div className='user-table-component'>
                 <div className='container'>
                     <div className='filter-bar'>
-                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names' value={filterValue} defaultValue={Filter.name}>
+                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names' defaultValue={filterValue}>
                             <option value={Filter.name}>Name</option>
                             <option value={Filter.username}>Username</option>
                             <option value={Filter.email}>Email</option>
                             <option value={Filter.phone}>Phone</option>
                         </select>
-                        <input onChange={e => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`}/>
+                        <input onChange={e => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`} />
                     </div>
                     <div className='table-wrapper'>
                         <table className='userTable'>

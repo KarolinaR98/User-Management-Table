@@ -20,10 +20,21 @@ const initialState: UsersState = {
     filteredData: []
 }
 
-export const getUsers = createAsyncThunk<User[]>("users", async () => {
-    return fetch("https://jsonplaceholder.typicode.com/users")
-        .then((response) => response.json())
-})
+export const getUsers = createAsyncThunk<User[]>(
+    "users",
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch users');
+            }
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            return rejectWithValue(error.message)
+        }
+    })
 
 export const usersSlice = createSlice({
     name: 'users',
@@ -62,10 +73,11 @@ export const usersSlice = createSlice({
                 state.data = [];
                 state.loading = false;
                 state.error = action.payload;
+                ;
             })
     }
 })
 
-export const { setUserSearchValue, setFilterValue, setFilteredData} = usersSlice.actions;
+export const { setUserSearchValue, setFilterValue, setFilteredData } = usersSlice.actions;
 
 export default usersSlice.reducer;
