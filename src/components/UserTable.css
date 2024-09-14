@@ -72,6 +72,29 @@
     display: none;
 }
 
+/*no results message*/
+
+.no-results-msg-container{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-results-msg-container img{
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+.no-result-msg{
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
 @media (max-width:800px) {
 
     .container {
@@ -109,5 +132,15 @@
     .userTable .cell-header {
         display: block;
         font-weight: bold;
+    }
+
+    /*no results message*/
+
+    .no-results-msg-container{
+        height: 75%;
+    }
+
+    .no-result-msg{
+        font-size: 2rem;
     }
 }

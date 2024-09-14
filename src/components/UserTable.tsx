@@ -1,7 +1,7 @@
 import './UserTable.css';
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getUsers, setUserSearchValue, setFilterValue, setFilteredData } from "../redux/usersSlice";
-import { Filter} from '../types';
+import { Filter } from '../types';
 import { useEffect } from 'react';
 
 
@@ -26,7 +26,7 @@ const UserTable = () => {
             <div className='user-table-component'>
                 <div className='container'>
                     <div className='filter-bar'>
-                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names' defaultValue={filterValue}>
+                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names'                       defaultValue={filterValue}>
                             <option value={Filter.name}>Name</option>
                             <option value={Filter.username}>Username</option>
                             <option value={Filter.email}>Email</option>
@@ -34,7 +34,7 @@ const UserTable = () => {
                         </select>
                         <input onChange={e => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`} />
                     </div>
-                    <div className='table-wrapper'>
+                    {users.length !== 0 && <div className='table-wrapper'>
                         <table className='userTable'>
                             <thead>
                                 <tr>
@@ -70,7 +70,11 @@ const UserTable = () => {
 
                             </tbody>
                         </table>
-                    </div>
+                    </div>}
+                    {users.length === 0 && <div className='no-results-msg-container'>
+                        <img src="./src/assets/images/white-loupe.png" alt="Loupe" />
+                        <p className='no-result-msg'>No results found</p>
+                    </div>}
                 </div>
             </div>
         </>
