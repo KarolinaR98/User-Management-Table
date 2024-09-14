@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/usertable.tsx","./src/redux/hooks.ts","./src/redux/store.ts","./src/redux/usersslice.ts"],"version":"5.6.2"}
