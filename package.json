@@ -2,7 +2,6 @@
   "name": "user-management-table",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://KarolinaR98.github.io/User-Management-Table/",
   "type": "module",
   "scripts": {
     "predeploy" : "npm run build",
