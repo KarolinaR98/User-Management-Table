@@ -88,7 +88,7 @@
     display: block;
 }
 
-.no-result-msg{
+.no-results-msg{
     color: #fff;
     font-size: 2.5rem;
     font-weight: 700;
@@ -140,7 +140,7 @@
         height: 75%;
     }
 
-    .no-result-msg{
+    .no-results-msg{
         font-size: 2rem;
     }
 }

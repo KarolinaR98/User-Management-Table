@@ -74,7 +74,7 @@ const UserTable = () => {
                     </div>}
                     {users.length === 0 && <div className='no-results-msg-container'>
                         <img src={loupeImg} alt="Loupe" />
-                        <p className='no-result-msg'>No results found</p>
+                        <p className='no-results-msg'>No results found</p>
                     </div>}
                 </div>
             </div>
