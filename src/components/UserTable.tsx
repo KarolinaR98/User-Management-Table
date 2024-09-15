@@ -27,13 +27,13 @@ const UserTable = () => {
             <div className='user-table-component'>
                 <div className='container'>
                     <div className='filter-bar'>
-                        <select onChange={e => dispatch(setFilterValue(e.target.value as Filter))} name='column-names'                       defaultValue={filterValue}>
+                        <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => dispatch(setFilterValue(e.target.value as Filter))} name='column-names'                       defaultValue={filterValue}>
                             <option value={Filter.name}>Name</option>
                             <option value={Filter.username}>Username</option>
                             <option value={Filter.email}>Email</option>
                             <option value={Filter.phone}>Phone</option>
                         </select>
-                        <input onChange={e => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`} />
+                        <input onChange={(e: React.ChangeEvent<HTMLInputElement>) => dispatch(setUserSearchValue(e.target.value))} type='text' placeholder={`Search user by ${filterValue}`} />
                     </div>
                     {users.length !== 0 && <div className='table-wrapper'>
                         <table className='userTable'>

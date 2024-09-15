@@ -69,10 +69,10 @@ export const usersSlice = createSlice({
                 state.loading = false;
                 state.error = null;
             })
-            .addCase(getUsers.rejected, (state, action: PayloadAction<any>) => {
+            .addCase(getUsers.rejected, (state, action) => {
                 state.data = [];
                 state.loading = false;
-                state.error = action.payload;
+                state.error = action.error.message ?? 'Unknown Error';
                 ;
             })
     }
