@@ -5,7 +5,7 @@ import {
   getUsers,
   setUserSearchValue,
   setFilterType,
-  setFilteredData,
+  setFilteredUsers,
 } from "../redux/usersSlice";
 import { FilterType } from "../types";
 import { useEffect } from "react";
@@ -23,7 +23,7 @@ const UserTable = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(setFilteredData());
+    dispatch(setFilteredUsers());
   }, [searchValue, filterType]);
 
   return (

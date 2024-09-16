@@ -56,7 +56,7 @@ export const usersSlice = createSlice({
       state.filterType = action.payload;
     },
 
-    setFilteredData: (state) => {
+    setFilteredUsers: (state) => {
       state.filteredUsers = state.users.filter((user) => {
         const fieldValue = user[state.filterType];
 
@@ -85,7 +85,7 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setUserSearchValue, setFilterType, setFilteredData } =
+export const { setUserSearchValue, setFilterType, setFilteredUsers } =
   usersSlice.actions;
 
 export default usersSlice.reducer;
