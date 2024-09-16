@@ -45,30 +45,30 @@
     height: 90%;
 }
 
-.userTable {
+.user-table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.userTable thead {
+.user-table thead {
     position: sticky;
     top: 0;
     background-color: rgb(140, 192, 62);
 }
 
-.userTable th,
-.userTable td {
+.user-table th,
+.user-table td {
     width: 25%;
     padding: 15px;
     color: #fff;
     text-align: left;
 }
 
-.userTable tr:nth-child(even) {
+.user-table tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.userTable .cell-header {
+.user-table .cell-header {
     display: none;
 }
 
@@ -115,21 +115,21 @@
         height: 85%;
     }
 
-    .userTable{
+    .user-table{
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .userTable th {
+    .user-table th {
         display: none;
     }
 
-    .userTable td {
+    .user-table td {
         width: 100%;
         display: flex;
         justify-content: space-between;
     }
 
-    .userTable .cell-header {
+    .user-table .cell-header {
         display: block;
         font-weight: bold;
     }

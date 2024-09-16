@@ -1,14 +1,11 @@
-export type User = {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    phone: string;
-}
-
-export enum Filter {
+export enum FilterType {
     name = "name",
     username = "username",
     email = "email",
-    phone = "phone"
+    phone = "phone",
 }
+
+export type User = {
+    id: number;
+} & Record<FilterType, string>
+
